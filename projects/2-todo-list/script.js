@@ -87,7 +87,22 @@ function addNewTodo(event) {
   }
 }
 
-// Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
-function deleteAllCompletedTodos() {
-  // Write your code here...
+/*
+ * Advanced challenge:
+ * Write a function that checks the todos in the todo list and
+ * deletes the completed ones.
+ * We can check which ones are completed by seeing
+ * if they have the line-through styling applied or not.
+ */
+function deleteAllCompletedTodos(event) {
+  // The code below prevents the page from refreshing when we click the 'Add Todo' button.
+  event.preventDefault();
+
+  let listItems = document.getElementsByClassName("list-group-item");
+  for(let i = 0; i < listItems.length; i++) {
+    if(listItems[i].style.textDecoration === "line-through") {
+      listItems[i].parentNode.removeChild(listItems[i]);
+      i = i - 1;
+    }
+  }
 }
